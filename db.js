@@ -142,6 +142,9 @@ export const translations = {
 	renovate: "refactor",
 	shutdown: "Alt+F4",
 	"turn off": "Alt+F4",
+	hide: "incognito",
+	repeat: "loop",
+	style: "css",
 };
 
 export const quotes = [

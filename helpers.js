@@ -4,23 +4,45 @@ function isNumeric(num) {
 	return !isNaN(parseInt(num));
 }
 
+const translationsArray = Object.keys(translations)
+	.map((layman) => ({
+		layman: layman.split(" "),
+		geek: translations[layman],
+	}))
+	.sort((a, b) => b.layman.length - a.layman.length);
+
 export function geeksay(text) {
 	const input = Array.isArray(text) ? text : String(text).split(" ");
-	return input.map(geeksayWord).join(" ");
+	const numsProcessed = input.map(geeksayWord);
+	const numsLC = numsProcessed.map((str) => str.toLowerCase());
+	const numsNoSymbols = numsLC.map(removeSymbols);
+	for (const translation of translationsArray) {
+		const joinedLayman = translation.layman.join(" ");
+		for (let i = 0; i < numsProcessed.length; i++) {
+			const toMatch = numsNoSymbols.slice(
+				i,
+				i + translation.layman.length
+			);
+			if (toMatch.join(" ") === joinedLayman) {
+				const newText = numsLC
+					.slice(i, i + translation.layman.length)
+					.join(" ")
+					.split(joinedLayman)
+					.join(translation.geek);
+				numsProcessed.splice(i, translation.layman.length, newText);
+				numsNoSymbols.splice(i, translation.layman.length, newText);
+				numsLC.splice(i, translation.layman.length, newText);
+			}
+		}
+	}
+	return numsProcessed.join(" ");
 }
 
 function geeksayWord(word) {
 	if (isNumeric(word)) {
 		return (word >>> 0).toString(2);
-	} else {
-		const lowerCaseText = removeSymbols(word).toLowerCase();
-		if (translations.hasOwnProperty(lowerCaseText)) {
-			word = word
-				.toLowerCase()
-				.replace(lowerCaseText, translations[lowerCaseText]);
-		}
-		return word;
 	}
+	return word;
 }
 
 function removeSymbols(word) {
