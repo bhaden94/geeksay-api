@@ -1,0 +1,17 @@
+import { geeksay, getRandomQuote, getRandomTranslation } from "./helpers.js";
+import express from "express";
+const app = express();
+const port = 4000;
+
+app.get("/", (req, res) => {
+	res.send(getRandomTranslation());
+});
+
+app.get("/random", (req, res) => {
+	const randomQuote = getRandomQuote();
+	res.send(`${randomQuote} -> ${geeksay(randomQuote)}`);
+});
+
+app.listen(port, () => {
+	console.log(`Example app listening at http://localhost:${port}`);
+});
