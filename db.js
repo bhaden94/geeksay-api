@@ -55,6 +55,9 @@ export const translations = {
 	geek: "g33k",
 	plus: "+",
 	minus: "-",
+	multiply: "*",
+	times: "*",
+	divide: "/",
 	and: "&&",
 	or: "||",
 	binary: "01",
@@ -88,6 +91,7 @@ export const translations = {
 	red: "#ff0000",
 	green: "#00ff00",
 	blue: "#0000ff",
+	pink: "#ffc0cb",
 	marry: "merge",
 	propose: "commit",
 	"not found": "404",
@@ -122,6 +126,22 @@ export const translations = {
 	waiting: "loading",
 	unauthorized: "401",
 	nothing: "void",
+	empty: "void",
+	mention: "declare",
+	trash: "/dev/null",
+	content: "data",
+	improve: "optimize",
+	change: "update",
+	bite: "byte",
+	age: "--version",
+	reload: "F5",
+	false: "!true",
+	lie: "!true",
+	back: "cd ..",
+	sleep: "hibernate",
+	renovate: "refactor",
+	shutdown: "Alt+F4",
+	"turn off": "Alt+F4",
 };
 
 export const quotes = [
@@ -169,4 +189,6 @@ export const quotes = [
 	"Easy as pie", // easy as π
 	"Live, laugh, love", // live, laugh, <3
 	"Green with envy", // #00ff00 with envy
+	"Bite me", //Byte me ;)
+	"Age is just a number", // --version is just a #
 ];
