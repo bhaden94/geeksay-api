@@ -1,7 +1,7 @@
 import { translations, quotes } from "./db.js";
 
 function isNumeric(num) {
-	return !isNaN(parseInt(num));
+	return /^-?\d+(\.\d+)?$/.test(num);
 }
 
 const translationsArray = Object.keys(translations)
@@ -40,7 +40,7 @@ export function geeksay(text) {
 
 function geeksayWord(word) {
 	if (isNumeric(word)) {
-		return (word >>> 0).toString(2);
+		return Math.trunc(text).toString(2);
 	}
 	return word;
 }

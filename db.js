@@ -145,6 +145,8 @@ export const translations = {
 	hide: "incognito",
 	repeat: "loop",
 	style: "css",
+	snake: "python",
+	teapot: "418",
 };
 
 export const quotes = [
