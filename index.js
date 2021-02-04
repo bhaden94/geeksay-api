@@ -6,13 +6,28 @@ const port = 4000;
 
 // translate quote to geek
 app.post("/", (req, res) => {
-	res.send(geeksay(req.body));
+	res.send({
+		no_geek: req.body,
+		geeked: geeksay(req.body),
+	});
 });
 
-// get a randow quote and see it translated to geek
-app.get("/random", (req, res) => {
+// get a random quote and see it translated to geek
+app.get("/random_quote", (req, res) => {
 	const randomQuote = getRandomQuote();
-	res.send(`${randomQuote} -> ${geeksay(randomQuote)}`);
+	res.send({
+		no_geek: randomQuote,
+		geeked: geeksay(randomQuote),
+	});
+});
+
+// get a random word and translate it to geek
+app.get("/random_word", (req, res) => {
+	const random = getRandomTranslation();
+	res.send({
+		no_geek: random.no_geek,
+		geeked: random.geeked,
+	});
 });
 
 app.listen(port, () => {

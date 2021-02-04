@@ -30,9 +30,10 @@ function removeSymbols(word) {
 export function getRandomTranslation() {
 	const keys = Object.keys(translations);
 	const randomKey = keys[Math.floor(Math.random() * keys.length)];
-	return (
-		"Random Translation: " + randomKey + " -> " + translations[randomKey]
-	);
+	return {
+		no_geek: randomKey,
+		geeked: translations[randomKey],
+	};
 }
 
 export function getRandomQuote() {
